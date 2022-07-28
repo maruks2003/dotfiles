@@ -3,9 +3,52 @@
 # simple script to unify info about currenty playing audio
 # to be easily used with polybar
 
-state=$( playerctl status )
-title=$( playerctl metadata xesam:title )
-artist=$( playerctl metadata xesam:artist )
-album=$( playerctl metadata xesam:album )
+err="No player could handle this command"
 
-echo "[$state] $artist - $title ($album)"
+state=$( playerctl status 2>&1 )
+artist=$( playerctl metadata xesam:artist 2>&1 )
+title=$( playerctl metadata xesam:title 2>&1 )
+album=$( playerctl metadata xesam:album 2>&1 )
+
+# Check if we got each property replace missing with empty
+
+if [[ $state == $err ]]
+then
+	state=""
+fi
+
+if [[ $artist == $err ]]
+then
+	artist=""
+fi
+
+if [[ $title == $err ]]
+then
+	title=""
+fi
+
+if [[ $album == $title ]] || [[ $album == $err ]]
+then
+	album=""
+fi
+
+# If we got the values format them a bit so they look better
+
+if [[ $state != "" ]]
+then
+	state="[$state]"
+fi
+
+if [[ $artist != "" ]]
+then
+	artist="$artist -"
+fi
+
+if [[ $album != "" ]]
+then
+	album="($album)"
+fi
+
+
+
+echo "$state $artist $title $album"
