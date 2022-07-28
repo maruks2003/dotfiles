@@ -1,0 +1,5 @@
+#!/usr/bin/bash
+
+selection=$(hacksaw)
+echo "$selection"
+shotgun -g "$selection" - | xclip -t 'image/png' -selection clipboard

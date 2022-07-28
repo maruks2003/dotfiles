@@ -1,0 +1,32 @@
+#!/usr/bin/bash
+
+# A simple command to hide/show polybar and adjust the padding
+# on bspwm accordingly so that there isn't empty space when
+# polybar is hidden
+
+# The amount of padding for bspwm should align with the height
+# of the polybar
+PADDING=24
+
+if [[ "$1" == "on" ]]
+then
+	polybar-msg cmd show
+	bspc config top_padding $PADDING
+
+elif [[ "$1" == "off" ]]
+then
+	polybar-msg cmd hide
+	bspc config top_padding 0
+
+elif [[ "$1" == "toggle" ]]
+then
+	if [[ $(bspc config top_padding) == $PADDING ]]
+	then
+		polybar-msg cmd hide
+		bspc config top_padding 0
+	else 
+		polybar-msg cmd show
+		bspc config top_padding $PADDING
+	fi
+fi
+

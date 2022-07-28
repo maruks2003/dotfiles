@@ -1,0 +1,3 @@
+#!/usr/bin/bash
+
+wal -i /home/morpheus/.config/wallpaper

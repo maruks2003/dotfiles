@@ -1,0 +1,62 @@
+#!/usr/bin/bash
+
+bg_name="bg"
+numbering_len=2
+
+fehbg="$HOME/.fehbg"
+wallpaper="$HOME/.config/wallpaper/"
+
+wallpaper_count=$( ls $wallpaper | wc -l )
+
+current_bg=$(sed -n "2p" $fehbg | grep -Po "(?<=bg)\d\d(?=\.)")
+bg_num=$(( 10#$current_bg ))
+
+add_leading_zeros () {
+
+	bg_num=$1
+	len=${#bg_num}
+	while [[ $len < $numbering_len ]]
+	do
+		bg_num="0$bg_num"
+		len=${#bg_num}
+	done
+
+	echo $bg_num
+}
+
+if [[ $1 == "next" ]]
+then
+	if [[ $bg_num != $wallpaper_count ]]
+	then
+		bg_num=$(( $bg_num + 1 ))
+	else
+		bg_num=1
+	fi
+	bg_num=$( add_leading_zeros $bg_num )
+	bg=$( ls $wallpaper | grep $bgname$bg_num )
+	echo $wallpaper$bg
+	wal -i $wallpaper$bg
+
+elif [[ $1 == "previous" ]]
+then
+	if [[ $bg_num != 1 ]]
+	then
+		bg_num=$(( $bg_num - 1 ))
+	else
+		bg_num=$wallpaper_count
+	fi
+	bg_num=$( add_leading_zeros $bg_num )
+	bg=$( ls $wallpaper | grep $bgname$bg_num )
+	echo $wallpaper$bg
+	wal -i $wallpaper$bg
+
+elif [[ $1 == "status" ]]
+then
+	echo "Current wallpaper: $bg_num"
+
+else
+	echo "Invalid argument, try:"
+	echo "	next - changes to the next wallpaper"
+	echo "	previous - changes to previous wallpaper"
+	echo "	status - shows current background number"
+fi

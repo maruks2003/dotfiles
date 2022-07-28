@@ -1,0 +1,11 @@
+#!/usr/bin/bash
+
+# simple script to unify info about currenty playing audio
+# to be easily used with polybar
+
+state=$( playerctl status )
+title=$( playerctl metadata xesam:title )
+artist=$( playerctl metadata xesam:artist )
+album=$( playerctl metadata xesam:album )
+
+echo "[$state] $artist - $title ($album)"
