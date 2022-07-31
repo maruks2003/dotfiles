@@ -1,0 +1,19 @@
+
+
+name = "Marek Slany"
+downloads-dir = "/home/morpheus/downloads"
+watch-cmds = ["himalaya list"]
+
+[gmail]
+default = true
+email = "marek.slany69@gmail.com"
+
+imap-host = "imap.gmail.com"
+imap-port = 993
+imap-login = "marek.slany69@gmail.com"
+imap-passwd-cmd = "pass show mail.google.com/app-marek.slany69@gmail.com"
+
+smtp-host  = "smtp.gmail.com"
+smtp-port = 465
+smtp-login = "marek.slany69@gmail.com"
+smtp-passwd-cmd = "pass show mail.google.com/app-marek.slany69@gmail.com"
