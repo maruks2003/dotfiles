@@ -3,6 +3,15 @@
 #
 
 # media keys - pretty self explaining
+XF86AudioPause
+	playerctl play-pause
+
+XF86AudioPrevious
+	playerctl previous
+
+XF86AudioNext
+	playerctl next
+
 shift + XF86AudioMute
 	playerctl play-pause
 

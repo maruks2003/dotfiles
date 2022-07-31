@@ -3,7 +3,10 @@
 # simple script to unify info about currenty playing audio
 # to be easily used with polybar
 
+# error
 err="No player could handle this command"
+# no player running
+np="No players found"
 
 state=$( playerctl status 2>&1 )
 artist=$( playerctl metadata xesam:artist 2>&1 )
@@ -12,22 +15,22 @@ album=$( playerctl metadata xesam:album 2>&1 )
 
 # Check if we got each property replace missing with empty
 
-if [[ $state == $err ]]
+if [[ $state == $err ]] || [[ $state == $np ]]
 then
 	state=""
 fi
 
-if [[ $artist == $err ]]
+if [[ $artist == $err ]] || [[ $artist == $np ]]
 then
 	artist=""
 fi
 
-if [[ $title == $err ]]
+if [[ $title == $err ]] || [[ $title == $np ]]
 then
 	title=""
 fi
 
-if [[ $album == $title ]] || [[ $album == $err ]]
+if [[ $album == $title ]] || [[ $album == $err ]] || [[ $album == $np ]]
 then
 	album=""
 fi
