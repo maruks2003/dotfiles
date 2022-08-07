@@ -1,16 +1,20 @@
 #!/usr/bin/bash
 
+# The name which precedes the number of the background
 bg_name="bg"
+# The length of the numbering e.g. 01 would be 2, 001 would be 3 etc.
 numbering_len=2
 
 fehbg="$HOME/.fehbg"
+
+# Where the wallpapers are stored
 wallpaper="$HOME/.config/wallpaper/"
 
-wallpaper_count=$( ls $wallpaper | wc -l )
+wallpaper_count=$(( $( find "$wallpaper" | wc -l ) - 1 ))
 
-current_bg=$(sed -n "2p" $fehbg | grep -Po "(?<=bg)\d\d(?=\.)")
-bg_num=$(( 10#$current_bg ))
+bg_num=$(( 10#$(sed -n "2p" "$fehbg" | grep -Po "(?<=$bg_name)\d\d(?=\.)") ))
 
+# Adds zeroes to numbers with less digits then numbering_len
 add_leading_zeros () {
 
 	bg_num=$1
@@ -21,38 +25,37 @@ add_leading_zeros () {
 		len=${#bg_num}
 	done
 
-	echo $bg_num
+	echo "$bg_num"
 }
 
-if [[ $1 == "next" ]]
+if [[ $1 = "next" ]]
 then
-	if [[ $bg_num != $wallpaper_count ]]
+	if [[ $bg_num != "$wallpaper_count" ]]
 	then
-		bg_num=$(( $bg_num + 1 ))
+		bg_num=$(( bg_num + 1 ))
 	else
 		bg_num=1
 	fi
 	bg_num=$( add_leading_zeros $bg_num )
-	bg=$( ls $wallpaper | grep $bgname$bg_num )
-	echo $wallpaper$bg
-	wal -i $wallpaper$bg
+	bg=$( find "$wallpaper" | grep "$bg_name$bg_num" )
+	wal -i "$bg"
 
-elif [[ $1 == "previous" ]]
+elif [[ $1 = "previous" ]]
 then
 	if [[ $bg_num != 1 ]]
 	then
-		bg_num=$(( $bg_num - 1 ))
+		bg_num=$(( bg_num - 1 ))
 	else
 		bg_num=$wallpaper_count
 	fi
-	bg_num=$( add_leading_zeros $bg_num )
-	bg=$( ls $wallpaper | grep $bgname$bg_num )
-	echo $wallpaper$bg
-	wal -i $wallpaper$bg
+	bg_num=$( add_leading_zeros "$bg_num" )
+	bg=$( find "$wallpaper" | grep "$bg_name$bg_num" )
+	wal -i "$bg"
 
-elif [[ $1 == "status" ]]
+elif [[ $1 = "status" ]]
 then
 	echo "Current wallpaper: $bg_num"
+	wal --preview
 
 else
 	echo "Invalid argument, try:"

@@ -3,7 +3,7 @@
 LED="sysfs/leds/platform::micmute"
 LED_VALUE=$(light -s $LED -G)
 
-if [ "$LED_VALUE" == "0.00" ]
+if [ "$LED_VALUE" = "0.00" ]
 then
 	light -s $LED -A 100
 else

@@ -1,5 +1,9 @@
 #! /bin/sh
+
+# start the background
+wal -i /home/morpheus/.config/wallpaper/bg17.jpg
 # source the colors.
+# shellcheck source="/home/morpheus/.cache/wal/colors.sh"
 . "${HOME}/.cache/wal/colors.sh"
 
 # Set the border colors.
@@ -11,8 +15,11 @@ bspc config presel_feedback_color "$color1"
 pgrep -x sxhkd > /dev/null || sxhkd &
 
 alacritty &
-$HOME/.config/polybar/launch.sh &
+"$HOME"/.config/polybar/launch.sh &
 pb on
+
+# switch caps for escape
+setxkbmap -option caps:swapescape &
 
 bspc monitor -d I II III IV V VI VII VIII IX X
 

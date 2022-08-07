@@ -15,22 +15,22 @@ album=$( playerctl metadata xesam:album 2>&1 )
 
 # Check if we got each property replace missing with empty
 
-if [[ $state == $err ]] || [[ $state == $np ]]
+if [[ $state = "$err" ]] || [[ $state = "$np" ]]
 then
 	state=""
 fi
 
-if [[ $artist == $err ]] || [[ $artist == $np ]]
+if [[ $artist = "$err" ]] || [[ $artist = "$np" ]]
 then
 	artist=""
 fi
 
-if [[ $title == $err ]] || [[ $title == $np ]]
+if [[ $title = "$err" ]] || [[ $title = "$np" ]]
 then
 	title=""
 fi
 
-if [[ $album == $title ]] || [[ $album == $err ]] || [[ $album == $np ]]
+if [[ $album = "$title" ]] || [[ $album = "$err" ]] || [[ $album = "$np" ]]
 then
 	album=""
 fi
