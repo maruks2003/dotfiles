@@ -1,12 +1,11 @@
-
-
 name = "Marek Slany"
 downloads-dir = "/home/morpheus/downloads"
-watch-cmds = ["himalaya list"]
+watch-cmds = ["mpv ${XDG_CONFIG_HOME}/himalaya/hunter_killer.mp3"]
 
 [69]
 default = true
 email = "marek.slany69@gmail.com"
+mailboxes = { inbox = "INBOX", sent = "[Gmail]/Odeslan&AOE- po&AWE-ta", draft = "[Gmail]/Koncepty"}
 
 imap-host = "imap.gmail.com"
 imap-port = 993
@@ -19,8 +18,8 @@ smtp-login = "marek.slany69@gmail.com"
 smtp-passwd-cmd = "pass show mail.google.com/app-marek.slany69@gmail.com"
 
 [2003]
-default = true
 email = "marek.slany2003@gmail.com"
+mailboxes = { inbox = "INBOX", sent = "[Gmail]/Odeslan&AOE- po&AWE-ta", draft = "[Gmail]/Koncepty"}
 
 imap-host = "imap.gmail.com"
 imap-port = 993
