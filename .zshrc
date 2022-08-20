@@ -8,6 +8,7 @@ bindkey -v
 # End of lines configured by zsh-newuser-install
 alias dotfiles="/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME"
 
+
 # Vi mode stuff
 KEYTIMEOUT=1
 

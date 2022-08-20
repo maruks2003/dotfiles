@@ -9,6 +9,7 @@ require("packer").startup(function()
 	use "L3MON4D3/LuaSnip"
 	use "dylanaraps/wal.vim"
 	use "Furkanzmc/cosmic_latte"
+    use "preservim/tagbar"
 end)
 
 local capabilities = vim.lsp.protocol.make_client_capabilities()

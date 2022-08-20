@@ -1,0 +1,9 @@
+#!/usr/bin/bash
+cover="/tmp/album_cover.jpg"
+
+artist=$( mpc -f "%artist%" | head -n 1 )
+album=$( mpc -f "%album%" | head -n 1 )
+size="400"
+
+sacad -t 10 "$artist" "$album" $size "$cover" &>/dev/null
+

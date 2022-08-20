@@ -1,3 +1,5 @@
+noblacklist ${HOME}/files
+noblacklist ${HOME}/.rustup
 whitelist ${HOME}/files
-noblacklist ${DOWNLOADS}
+whitelist ${HOME}/.rustup
 include /etc/firejail/firefox.profile

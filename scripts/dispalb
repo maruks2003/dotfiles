@@ -1,0 +1,21 @@
+#!/usr/bin/bash
+
+# wrapper around the script for displaying album art
+# in terminal just clears the prompt so it doesn't
+# get in the way
+
+function user_interrupt {
+	# reload the default zsh configuration
+	exit
+}
+
+function clean_term {
+	export PS1=''
+	clear
+}
+
+trap user_interrupt SIGINT
+
+clean_term
+"${HOME}"/.config/ncmpcpp/dispalb.py
+

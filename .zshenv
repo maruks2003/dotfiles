@@ -8,3 +8,4 @@ export PATH
 export EDITOR=/usr/bin/nvim
 export DOWNLOADS=$HOME/downloads
 export XDG_CONFIG_HOME=$HOME/.config
+export TRANSPARENCY=75
