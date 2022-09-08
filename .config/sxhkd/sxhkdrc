@@ -2,24 +2,28 @@
 # wm independent hotkeys
 #
 
+# keyboard layout switching
+super + alt + {_,shift +} @space
+    setxkbmap {us, cz qwerty} -option caps:swapescape
+
 # media keys - pretty self explaining
 XF86AudioPause
 	playerctl play-pause
 
 XF86AudioPrevious
-	playerctl previous
+	playerctl previous & mpc prev
 
 XF86AudioNext
-	playerctl next
+	playerctl next & mpc next
 
 shift + XF86AudioMute
 	playerctl play-pause
 
 shift + XF86AudioLowerVolume
-	playerctl previous
+	playerctl previous & mpc prev
 
 shift + XF86AudioRaiseVolume
-	playerctl next
+	playerctl next & mpc next
 
 # reroll background
 super + r
@@ -64,6 +68,10 @@ super + Return
 # program launcher
 super + @space
 	dmenu-color
+
+# passmenu
+super + p
+    passmenu-color
 
 # make sxhkd reload its configuration files:
 super + Escape
