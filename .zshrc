@@ -6,8 +6,14 @@ SAVEHIST=1000
 setopt autocd
 bindkey -v
 # End of lines configured by zsh-newuser-install
+
+# Some useful aliases
+
+# Choose random file from directory
+alias randfile="ls | sort -R | head -n 1"
 alias dotfiles="/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME"
 alias lf="lfrun"
+alias fuck='sudo $(fc -nl -1)'
 
 
 # Vi mode stuff

@@ -51,15 +51,15 @@ XF86AudioMicMute
 
 # mute volume
 XF86AudioMute
-	pw-volume mute toggle && toggle-mute-led
+	pulsemixer --toggle-mute && toggle-mute-led
 
 # decrease/increase brightness
 {XF86MonBrightnessDown,XF86MonBrightnessUp}
 	light {-U,-A} 1
 
 # decrease/increase volume
-{XF86AudioLowerVolume,XF86AudioRaiseVolume}
-	pw-volume change {-,+}1% 
+{@XF86AudioLowerVolume,@XF86AudioRaiseVolume}
+	pulsemixer --change-volume {-,+}1 
 
 # terminal emulator
 super + Return

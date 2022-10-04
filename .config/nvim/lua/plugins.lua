@@ -10,6 +10,8 @@ require("packer").startup(function()
 	use "dylanaraps/wal.vim"
 	use "Furkanzmc/cosmic_latte"
     use "preservim/tagbar"
+    use "J4CKR3D/Hypsteria"
+    use "jnurmine/Zenburn"
 end)
 
 local capabilities = vim.lsp.protocol.make_client_capabilities()
@@ -17,16 +19,17 @@ capabilities = require("cmp_nvim_lsp").update_capabilities(capabilities)
 
 local lspconfig = require("lspconfig")
 
-local servers = {"bashls", "pyright", "sumneko_lua", "rust_analyzer", "ccls"}
+local servers = {"bashls", "pyright",
+	"sumneko_lua", "rust_analyzer", "ccls", "texlab"}
 for _, lsp in ipairs(servers) do
 	lspconfig[lsp].setup {
 		capabilities = capabilities,
 	}
 end
 
-local luasnip = require "luasnip"
+local luasnip = require"luasnip"
 
-local cmp = require "cmp"
+local cmp = require"cmp"
 cmp.setup {
 	snippet = {
 		expand = function(args)

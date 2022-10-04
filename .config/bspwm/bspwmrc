@@ -1,7 +1,7 @@
 #! /bin/sh
 
 # start the background
-wal -i /home/morpheus/.config/wallpaper/bg17.jpg
+wal -i /home/morpheus/.config/wallpaper/bg18.jpg
 # source the colors.
 # shellcheck source="/home/morpheus/.cache/wal/colors.sh"
 . "${HOME}/.cache/wal/colors.sh"

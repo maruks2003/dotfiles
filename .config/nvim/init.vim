@@ -2,6 +2,9 @@ luafile ~/.config/nvim/lua/init.lua
 
 let g:tagbar_left = 1
 
+" Some true color shit or something
+set termguicolors
+
 set number
 set splitbelow
 colorscheme cosmic_latte

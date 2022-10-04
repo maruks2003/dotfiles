@@ -1,3 +1,6 @@
+# The environment
+#env:
+#  TERM: xterm-256-color
 # Font configuration
 font:
   normal:
