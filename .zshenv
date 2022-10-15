@@ -6,6 +6,7 @@ path=(/usr/local/bin $path)
 path=(~/go/bin $path)
 export PATH
 
+export _JAVA_AWT_WM_NONREPARENTING=1
 export EDITOR=/usr/bin/nvim
 export DOWNLOADS=$HOME/downloads
 export XDG_CONFIG_HOME=$HOME/.config

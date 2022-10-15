@@ -80,6 +80,14 @@ scheme:
 
 colors: *darktooth
 window:
-  opacity: 0.88
+  padding:
+    x: 5
+    y: 5
+
+  #Opacity on
+  opacity: 0.7
+  #Opacity off
+  #opacity: 1
+
 
 

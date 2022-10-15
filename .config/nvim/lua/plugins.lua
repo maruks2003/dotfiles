@@ -12,6 +12,7 @@ require("packer").startup(function()
     use "preservim/tagbar"
     use "J4CKR3D/Hypsteria"
     use "jnurmine/Zenburn"
+    use "norcalli/nvim-colorizer.lua"
 end)
 
 local capabilities = vim.lsp.protocol.make_client_capabilities()

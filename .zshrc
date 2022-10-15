@@ -11,9 +11,16 @@ bindkey -v
 
 # Choose random file from directory
 alias randfile="ls | sort -R | head -n 1"
+# ls with color
+alias ls="ls --color=auto"
+# Git for dotfiles
 alias dotfiles="/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME"
+# lf to use with images
 alias lf="lfrun"
+# run the previous command as sudo
 alias fuck='sudo $(fc -nl -1)'
+# Hibernate
+alias hibernate="systemctl hibernate"
 
 
 # Vi mode stuff

@@ -67,7 +67,7 @@ super + Return
 
 # program launcher
 super + @space
-	dmenu-color
+    rofi -show drun
 
 # passmenu
 super + p

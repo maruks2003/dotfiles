@@ -1,5 +1,3 @@
-luafile ~/.config/nvim/lua/init.lua
-
 let g:tagbar_left = 1
 
 " Some true color shit or something
@@ -29,3 +27,6 @@ set lcs+=space:·
 set colorcolumn=81
     
 nnoremap <F3> :TagbarToggle<CR>
+vnoremap <F4> :'<,'>!column -t -s '&' -o ' &'<CR>
+
+luafile ~/.config/nvim/lua/init.lua

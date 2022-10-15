@@ -1,0 +1,33 @@
+# Ignore everything I haven't touched
+/*
+/.config/*
+
+# And include everything I have touched
+!README.md
+!.gitignore
+!.config/
+!.config/alacritty/
+!.config/bspwm/
+!.config/nvim/
+!.config/cava/
+!.config/zsh/
+!.config/polybar/
+!.config/sxhkd/
+!.config/vifm/
+!.config/himalaya
+!.config/mpv
+!.config/mpd
+!.config/ncmpcpp
+!.config/firejail
+!.xinitrc
+!.zshrc
+!.zshenv
+!.zprofile
+!scripts/
+
+# Files that aren't configured by hand
+.config/mpd/mpd.db
+.config/mpd/mpdstate
+.config/mpd/mpd.pid
+.config/mpd/mpdstate
+.config/mpd/sticker.sql
