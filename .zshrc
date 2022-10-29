@@ -22,6 +22,7 @@ alias fuck='sudo $(fc -nl -1)'
 # Hibernate
 alias hibernate="systemctl hibernate"
 
+# End of useful aliases
 
 # Vi mode stuff
 KEYTIMEOUT=1

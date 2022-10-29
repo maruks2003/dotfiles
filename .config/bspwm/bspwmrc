@@ -14,7 +14,7 @@ bspc config presel_feedback_color "$color1"
 
 pgrep -x sxhkd > /dev/null || sxhkd &
 
-alacritty &
+uwufetch | alacritty &
 "$HOME"/.config/polybar/launch.sh &
 pb on
 

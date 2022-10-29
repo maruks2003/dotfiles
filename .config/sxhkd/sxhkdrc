@@ -25,13 +25,17 @@ shift + XF86AudioLowerVolume
 shift + XF86AudioRaiseVolume
 	playerctl next & mpc next
 
+# hibernate
+super + alt + BackSpace
+    systemctl hibernate
+
 # reroll background
 super + r
-	bg-reroll
+	bg-reroll & pywalfox update & pywal-discord
 
 # cycle background
 super + {Prior,Next}
-	cycle-bg {previous,next}
+	cycle-bg {previous,next} & pywalfox update & pywal-discord
 
 # lock all virtual terminals
 super + shift + Escape
