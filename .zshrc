@@ -21,6 +21,9 @@ alias lf="lfrun"
 alias fuck='sudo $(fc -nl -1)'
 # Hibernate
 alias hibernate="systemctl hibernate"
+# Nvim opening stuff
+alias -s {txt,c,asm,rs,h,tex,py}=nvim
+alias Makefile="nvim Makefile"
 
 # End of useful aliases
 
@@ -72,3 +75,6 @@ zle-line-init() {
     echo -ne "\e[5 q"
 }
 zle -N zle-line-init
+
+source /usr/share/fzf/key-bindings.zsh
+source /usr/share/fzf/completion.zsh

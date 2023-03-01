@@ -1,3 +1,0 @@
-#!/usr/bin/bash
-
-sudo sed -i '/HandleLidSwitch=ignore/{s/HandleLidSwitch=ignore/HandleLidSwitch=suspend/;p;d};s/HandleLidSwitch=suspend/HandleLidSwitch=ignore/' /etc/systemd/logind.conf ; sudo killall -HUP systemd-logind

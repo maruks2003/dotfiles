@@ -31,11 +31,11 @@ super + alt + BackSpace
 
 # reroll background
 super + r
-	bg-reroll & pywalfox update & pywal-discord
+	bg-reroll & sleep 0.5 ; pywalfox update & pywal-discord
 
 # cycle background
 super + {Prior,Next}
-	cycle-bg {previous,next} & pywalfox update & pywal-discord
+	cycle-bg {previous,next} & sleep 0.5 ; pywalfox update & pywal-discord
 
 # lock all virtual terminals
 super + shift + Escape

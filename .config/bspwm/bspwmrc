@@ -40,3 +40,6 @@ bspc rule -a android-studio state=floating
 
 #Some stuff for java applications
 wmname LG3D
+
+#Start redshift
+redshift &

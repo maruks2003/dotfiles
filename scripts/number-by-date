@@ -1,0 +1,9 @@
+#!/usr/bin/bash
+#
+NUMBER=1
+
+for i in $(ls -crt);
+do
+    mv $i $(echo "$i" | sed "s/.*\./$NUMBER\./g")
+    NUMBER=$(( NUMBER+1))
+done

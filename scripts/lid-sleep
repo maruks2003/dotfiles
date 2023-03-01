@@ -1,0 +1,16 @@
+#!/usr/bin/bash
+
+CONFIG="/etc/systemd/logind.conf"
+
+if [[ $1 = "toggle" ]]
+then
+	sudo sed -i '/HandleLidSwitch=ignore/{s/HandleLidSwitch=ignore/HandleLidSwitch=suspend/;p;d};s/HandleLidSwitch=suspend/HandleLidSwitch=ignore/' $CONFIG ; sudo killall -HUP systemd-logind
+	cat $CONFIG | grep "HandleLidSwitch="
+elif [[ $1 = "info" ]]
+then
+	cat $CONFIG | rg "HandleLidSwitch="
+else
+	echo "Invalid argument, try:"
+	echo "	toggle - toggle sleep behaviour on lid close"
+	echo "	info - print info abour current config"
+fi
