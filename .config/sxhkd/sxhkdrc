@@ -2,9 +2,13 @@
 # wm independent hotkeys
 #
 
+# toggle the touchpad
+super + alt + t
+	touchpad-toggle
+
 # keyboard layout switching
 super + alt + {_,shift +} @space
-    setxkbmap {us, cz qwerty} -option caps:swapescape
+	setxkbmap {us, cz qwerty} -option caps:swapescape
 
 # media keys - pretty self explaining
 XF86AudioPause
@@ -54,8 +58,8 @@ XF86AudioMicMute
 	toggle-micmute-led
 
 # mute volume
-XF86AudioMute
-	pulsemixer --toggle-mute && toggle-mute-led
+#XF86AudioMute
+	#pulsemixer --toggle-mute && toggle-mute-led
 
 # decrease/increase brightness
 {XF86MonBrightnessDown,XF86MonBrightnessUp}

@@ -16,7 +16,7 @@
 !.config/himalaya
 !.config/mpv
 !.config/mpd
-!.config/ncmpcpp
+!.config/ncmpcpp/
 !.config/firejail
 !.xinitrc
 !.zshrc
@@ -25,6 +25,7 @@
 !scripts/
 
 # Files that aren't configured by hand
+.config/ncmpcpp/error.log
 .config/mpd/mpd.db
 .config/mpd/mpdstate
 .config/mpd/mpd.pid
@@ -32,3 +33,5 @@
 .config/mpd/sticker.sql
 .config/mpd/playlists/
 scripts/circuitjs1/
+
+scripts/ref

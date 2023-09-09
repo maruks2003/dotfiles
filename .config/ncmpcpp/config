@@ -9,5 +9,3 @@ mpd_connection_timeout = 5
 mpd_crossfade_time = 5
 
 lyrics_fetchers=metrolyrics, genius, azlyrics
-
-execute_on_song_change = "~/.config/ncmpcpp/albartd &"

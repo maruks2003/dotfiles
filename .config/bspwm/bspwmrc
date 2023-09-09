@@ -1,7 +1,10 @@
-#! /bin/sh
+#! /bin/bash
+
+INTERNAL_MONITOR="eDP"
+EXTERNAL_MONITOR="HDMI-A-0"
 
 # start the background
-wal -i /home/morpheus/.config/wallpaper/bg18.jpg
+wal -i /home/morpheus/.config/wallpaper/bg24.jpg
 # source the colors.
 # shellcheck source="/home/morpheus/.cache/wal/colors.sh"
 . "${HOME}/.cache/wal/colors.sh"
@@ -14,14 +17,50 @@ bspc config presel_feedback_color "$color1"
 
 pgrep -x sxhkd > /dev/null || sxhkd &
 
-uwufetch | alacritty &
 "$HOME"/.config/polybar/launch.sh &
 pb on
 
 # switch caps for escape
 setxkbmap -option caps:swapescape &
 
-bspc monitor -d I II III IV V VI VII VIII IX X
+if [[ "$1" = 0 ]]; then
+    if [[ $(xrandr -q | grep "${EXTERNAL_MONITOR} connected") ]]; then
+        bspc monitor "$EXTERNAL_MONITOR" -d "I" "II" "III" "IV" "V" 
+        bspc monitor "$INTERNAL_MONITOR" -d "VI" "VII" "VIII" "IX" "X"
+        bspc wm -O "$EXTERNAL_MONITOR" "$INTERNAL_MONITOR"
+    else
+        bspc monitor "$INTERNAL_MONITOR" -d "I" "II" "III" "IV" "V" "VI" "VII" "VIII" "IX" "X"
+    fi
+fi
+
+monitor_add() {
+    # Move first 5 desktops to external monitor
+    for desktop in $(bspc query -D --names -m "$INTERNAL_MONITOR" | sed 5q); do
+        bspc desktop "$desktop" --to-monitor "$EXTERNAL_MONITOR"
+    done
+
+    # Remove default desktop created by bspwm
+    bspc desktop Desktop --remove
+
+    # reorder monitors
+    bspc wm -O "$EXTERNAL_MONITOR" "$INTERNAL_MONITOR"
+}
+
+monitor_remove() {
+    # Add default temp desktop because a minimum of one desktop is required per monitor
+    bspc monitor "$EXTERNAL_MONITOR" -a Desktop
+
+    # Move all desktops except the last default desktop to internal monitor
+    for desktop in $(bspc query -D -m "$EXTERNAL_MONITOR");	do
+        bspc desktop "$desktop" --to-monitor "$INTERNAL_MONITOR"
+    done
+
+    # delete default desktops
+    bspc desktop Desktop --remove
+
+    # reorder desktops
+    bspc monitor "$INTERNAL_MONITOR" -o "I" "II" "III" "IV" "V" "VI" "VII" "VIII" "IX" "X"
+}
 
 bspc config border_width         2
 bspc config window_gap           5
@@ -43,3 +82,19 @@ wmname LG3D
 
 #Start redshift
 redshift &
+
+if [[ $(xrandr -q | grep "${EXTERNAL_MONITOR} connected") ]]; then
+    # set xrandr rules for docked setup
+    xrandr --output "$INTERNAL_MONITOR" --mode 1920x1080 --pos 0x0 --rotate normal --output "$EXTERNAL_MONITOR" --primary --mode 1920x1080 --pos 1920x0 --rotate normal
+    if [[ $(bspc query -D -m "${EXTERNAL_MONITOR}" | wc -l) -ne 5 ]]; then
+        monitor_add
+    fi
+
+    bspc wm -O "$EXTERNAL_MONITOR" "$INTERNAL_MONITOR"
+else
+    # set xrandr rules for mobile setup
+    xrandr --output "$INTERNAL_MONITOR" --primary --mode 1920x1080 --pos 0x0 --rotate normal --output "$EXTERNAL_MONITOR" --off
+    if [[ $(bspc query -D -m "${INTERNAL_MONITOR}" | wc -l) -ne 10 ]]; then
+        monitor_remove
+    fi
+fi

@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+
+#Prints random file from the provided dir
+if [ -z "$1" ]; then
+    ls | sort -R | head -n 1
+else
+    ls "$1" | sort -R | head -n 1
+fi

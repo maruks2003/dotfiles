@@ -19,7 +19,7 @@ add_leading_zeros () {
 
 	bg_num=$1
 	len=${#bg_num}
-	while [[ $len < $numbering_len ]]
+	while [[ $len -lt $numbering_len ]]
 	do
 		bg_num="0$bg_num"
 		len=${#bg_num}
@@ -38,7 +38,8 @@ then
 	fi
 	bg_num=$( add_leading_zeros $bg_num )
 	bg=$( find "$wallpaper" | grep "$bg_name$bg_num" )
-	wal -i "$bg"
+	wal -i -n "$bg"
+	feh --bg-max "$bg"
 
 elif [[ $1 = "previous" ]]
 then
@@ -50,7 +51,8 @@ then
 	fi
 	bg_num=$( add_leading_zeros "$bg_num" )
 	bg=$( find "$wallpaper" | grep "$bg_name$bg_num" )
-	wal -i "$bg"
+	wal -i -n "$bg"
+	feh --bg-max "$bg"
 
 elif [[ $1 = "status" ]]
 then
