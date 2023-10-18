@@ -4,22 +4,22 @@ CONFIG="/etc/systemd/logind.conf"
 
 if [[ $1 = "toggle" ]]; then
 {
-	sed -i '/HandleLidSwitch=ignore/{s/HandleLidSwitch=ignore/HandleLidSwitch=suspend/;p;d};s/HandleLidSwitch=suspend/HandleLidSwitch=ignore/' $CONFIG ; sudo killall -HUP systemd-logind
-	cat $CONFIG | rg "HandleLidSwitch="
+	sudo sed -i '/HandleLidSwitch=ignore/{s/HandleLidSwitch=ignore/HandleLidSwitch=suspend/;p;d};s/HandleLidSwitch=suspend/HandleLidSwitch=ignore/' $CONFIG ; sudo killall -HUP systemd-logind
+	sudo cat $CONFIG | rg "HandleLidSwitch="
 }
 elif [[ $1 = "on" ]]; then
 {
-	sed -i 's/HandleLidSwitch=ignore/HandleLidSwitch=suspend/g' $CONFIG ; sudo killall -HUP systemd-logind
-	cat $CONFIG | rg "HandleLidSwitch="
+	sudo sed -i 's/HandleLidSwitch=ignore/HandleLidSwitch=suspend/g' $CONFIG ; sudo killall -HUP systemd-logind
+	sudo cat $CONFIG | rg "HandleLidSwitch="
 }
 elif [[ $1 = "off" ]]; then
 {
-	sed -i 's/HandleLidSwitch=suspend/HandleLidSwitch=ignore/g' $CONFIG ; sudo killall -HUP systemd-logind
-	cat $CONFIG | rg "HandleLidSwitch="
+	sudo sed -i 's/HandleLidSwitch=suspend/HandleLidSwitch=ignore/g' $CONFIG ; sudo killall -HUP systemd-logind
+	sudo cat $CONFIG | rg "HandleLidSwitch="
 }
 elif [[ $1 = "info" ]]; then
 {
-	cat $CONFIG | rg "HandleLidSwitch="
+	sudo cat $CONFIG | rg "HandleLidSwitch="
 }
 else
 {

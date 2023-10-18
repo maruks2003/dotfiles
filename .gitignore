@@ -32,6 +32,7 @@
 .config/mpd/mpdstate
 .config/mpd/sticker.sql
 .config/mpd/playlists/
+.config/cava/shaders/
 scripts/circuitjs1/
 
 scripts/ref
